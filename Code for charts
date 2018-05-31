@@ -44,12 +44,14 @@ g <- g + scale_x_continuous(limits = c(0.85,5.1))
 g <- g + scale_color_manual(values = c("#1485A4", "#8F9394"))     # Specify colours of points
 g <- g + labs(x = NULL, y = NULL)                                 # Remove axis titles
 g <- g + theme(panel.grid = element_blank())                      # Remove gridlines
+g <- g + theme(axis.line = element_blank())
 g <- g + theme(axis.ticks = element_blank())                      # Remove tick marks
 g <- g + theme(axis.text.x = element_blank())                     # Remove x-axis labels for
 g <- g + theme(legend.position =  "none")                         # Remove Legend
 g <- g + theme(text = element_text(size = 30, family = "Century Gothic")) # Customise font of text
 g <- g + theme(plot.background = element_rect(fill = "#D1E7F6"))  # Change background colour of plot
 g <- g + theme(panel.background = element_rect(fill = "#D1E7F6")) # Change background colour of panel
+
 
 
 ## Hard Skills - Polar Chart -----------------------------------------------
