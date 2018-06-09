@@ -23,7 +23,7 @@ scatter_data <- data.frame(software = c(rep("R", 5),
                                         rep("Excel", 5),
                                         rep("MongoDB", 5),
                                         rep("Tableau", 5)),
-                           rating = rep(c(1:5), 7),
+                           rating = rep(c(1,2,3,4,5), 7),
                            colour = c(rep("A", 5),
                                       c(rep("A", 4), "B"),
                                       c(rep("A", 3), rep("B", 2)),
@@ -66,24 +66,23 @@ library(extrafont)
 # For example I had Data Management as 2, QA as 3 etc. It's not a huge deal if you do, but I feel 
 # the chart looks best when in this specific order. 
 
-polar_data <- data.frame(x = c("Data\nManagement",
-                               "Quality\nAssurance",
+polar_data <- data.frame(x = c("Quality\nAssurance",
+                               "Data\nManagement",
+                               "Machine\nLearning",
                                "Data\nVisualisation",
-                               "Data\nAnalysis",
-                               "Machine\nLearning"),
+                               "Data\nAnalysis"),
                          y = c(2,3,4,5,1))
-
 
 # Create plot. Again, I used a specific them :) Also I had to manually fiddle with the text positioning
 # as the automatic positions didn't look good. 
 
-g <- ggplot(polar_data, aes(factor(x, levels = x), y))
+ggplot(polar_data, aes(factor(x, levels = x), y))
 g <- g + geom_bar(width = 0.95,stat = "identity", fill = "#1485A4", colour = "#FFFFFF")
 g <- g + coord_polar()
-g <- g + scale_y_continuous(limits = c(-3,7)) # Change the first number to alter how much space is in the middle
-g <- g + annotate("text", x = 5, y = 5, label = "Machine\nLearning",   size = 7, family = "Century Gothic")
+g <- g + scale_y_continuous(limits = c(-3,7))
+g <- g + annotate("text", x = 5, y = 5, label = "Quality\nAssurance",   size = 7, family = "Century Gothic")
 g <- g + annotate("text", x = 1, y = 5, label = "Data\nManagement",    size = 7, family = "Century Gothic")
-g <- g + annotate("text", x = 2, y = 6, label = "Quality\nAssurance",  size = 7, family = "Century Gothic")
+g <- g + annotate("text", x = 2, y = 6, label = "Machine\nLearning",  size = 7, family = "Century Gothic")
 g <- g + annotate("text", x = 3, y = 6, label = "Data\nVisualisation", size = 7, family = "Century Gothic")
 g <- g + annotate("text", x = 4, y = 7, label = "Data\nAnalysis",      size = 7, family = "Century Gothic")
 g <- g + theme(panel.grid =  element_blank())
